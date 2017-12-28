@@ -17,8 +17,20 @@ public class SimpleBusController : MonoBehaviour
     public float maxMotorTorque;
     public float maxSteeringAngle;
 
-    public int currentPassengers;
+    public List<Passenger> currentPassengers;
     public readonly int maxPassengers;
+
+    public void DisembarkAndBoardPassengers(List<Passenger> passengers, StopController stop)
+    {
+        foreach (Passenger p in currentPassengers.FindAll(p => p.Destination == stop))
+        {
+            currentPassengers.Remove(p);
+        }
+        foreach (Passenger p in passengers)
+        {
+            currentPassengers.Add(p);
+        }
+    }
 
     public void ApplyLocalPositionToVisuals(WheelCollider collider)
     {

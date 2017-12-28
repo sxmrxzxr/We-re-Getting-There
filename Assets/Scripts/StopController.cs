@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StopController : MonoBehaviour {
 
     public bool visited;
-    public int passengers;
+    public List<Passenger> passengers;
     public string stopName;
 
     private float currentTimerValue;
@@ -26,6 +27,7 @@ public class StopController : MonoBehaviour {
     {
         gameObject.GetComponent<Renderer>().material.color = Color.green;
         visited = false;
+        passengers.Select(p => { p.Departure = this; return p; }).ToList();
     }
 
     void OnTriggerEnter(Collider c)
@@ -41,7 +43,7 @@ public class StopController : MonoBehaviour {
 
         if (currentTimerValue == 0)
         {
-            bus.currentPassengers += passengers;
+            bus.DisembarkAndBoardPassengers(passengers, this);         
             currentTimerValue = -1;
             visited = true;
             gameObject.GetComponent<Renderer>().material.color = Color.red;

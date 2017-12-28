@@ -21,7 +21,7 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        passengersText.text = "Passengers: " + bus.currentPassengers;
+        passengersText.text = "Passengers: " + bus.currentPassengers.Count;
         nextStopText.text = "Next Stop: " + route.GetNextStop();
         timerText.text = game.GetCurrentTimerValue();
         gameResultText.text = game.GetGameResult();

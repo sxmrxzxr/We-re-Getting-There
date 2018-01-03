@@ -20,12 +20,16 @@ public class SimpleBusController : MonoBehaviour
     public List<Passenger> currentPassengers;
     public readonly int maxPassengers;
 
-    public void DisembarkAndBoardPassengers(List<Passenger> passengers, StopController stop)
+    public void DisembarkPassengers(StopController stop)
     {
         foreach (Passenger p in currentPassengers.FindAll(p => p.Destination == stop))
         {
             currentPassengers.Remove(p);
         }
+    }
+
+    public void BoardPassengers(List<Passenger> passengers)
+    {
         foreach (Passenger p in passengers)
         {
             currentPassengers.Add(p);

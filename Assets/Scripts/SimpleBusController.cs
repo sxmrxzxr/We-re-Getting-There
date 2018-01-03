@@ -77,8 +77,6 @@ public class SimpleBusController : MonoBehaviour
             
             ApplyLocalPositionToVisuals(axleInfo.leftWheel);
             ApplyLocalPositionToVisuals(axleInfo.rightWheel);
-
-            // Debug.Log("motor: " + axleInfo.leftWheel.motorTorque + ", " + "input: " + Input.GetAxis("Vertical") + ", " + "braked: " + brake);
         }        
     }
 }

@@ -42,10 +42,8 @@ public class StopController : MonoBehaviour {
 
     void RenderDisembarkingPassengers(List<Passenger> disembarkingPassengers)
     {
-        Debug.Log(disembarkingPassengers.FindAll(d => d.Destination.stopName == this.stopName));
         foreach (Passenger p in disembarkingPassengers.FindAll(d => d.Destination.stopName == this.stopName))
         {
-            //Debug.Log(p);
             Vector3 pos = new Vector3(disembarkArea.position.x, .25f, disembarkArea.position.z);
             GameObject newPassenger = Instantiate(passenger, pos, Quaternion.identity);
             newPassenger.transform.parent = disembarkArea;
@@ -56,10 +54,8 @@ public class StopController : MonoBehaviour {
     {
         foreach (Transform g in passengerArea.GetComponentsInChildren<Transform>())
         {
-            //Debug.Log(g);
             if (g.tag == "Passenger")
             {
-                Debug.Log("g is passenger");
                 Destroy(g.gameObject);
             }
         }
@@ -75,8 +71,6 @@ public class StopController : MonoBehaviour {
 
     void OnTriggerEnter(Collider c)
     {
-        Debug.Log(c);
-
         if (c.name == "Cube")
             StartCoroutine(StartBoardingTimer());        
     }
@@ -87,9 +81,6 @@ public class StopController : MonoBehaviour {
 
         if (currentTimerValue == 0)
         {
-            // Debug.Log("got here");
-
-            // currentTimerValue = -1;
             visited = true;            
             
             bus.BoardPassengers(passengers);

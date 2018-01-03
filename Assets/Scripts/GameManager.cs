@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        bus.transform.position = route.StartNode.transform.position;
         gameResult = GameResult.InProgress;
         timerValue = timeLimit;
         StartCoroutine(StartTimer());

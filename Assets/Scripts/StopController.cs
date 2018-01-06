@@ -34,7 +34,7 @@ public class StopController : MonoBehaviour {
     {
         foreach (Passenger p in passengers)
         {
-            Vector3 pos = new Vector3(passengerArea.position.x, .25f, passengerArea.position.z);
+            Vector3 pos = new Vector3(Random.Range(passengerArea.position.x, passengerArea.position.x + 0.25f), 0.25f, Random.Range(passengerArea.position.z, passengerArea.position.z + 0.5f));
             GameObject newPassenger = Instantiate(passenger, pos, Quaternion.identity);
             newPassenger.transform.parent = passengerArea;
         }
@@ -44,6 +44,7 @@ public class StopController : MonoBehaviour {
     {
         foreach (Passenger p in disembarkingPassengers.FindAll(d => d.Destination.stopName == this.stopName))
         {
+            new WaitForSeconds(1.0f);
             Vector3 pos = new Vector3(disembarkArea.position.x, .25f, disembarkArea.position.z);
             GameObject newPassenger = Instantiate(passenger, pos, Quaternion.identity);
             newPassenger.transform.parent = disembarkArea;
@@ -56,6 +57,7 @@ public class StopController : MonoBehaviour {
         {
             if (g.tag == "Passenger")
             {
+                new WaitForSeconds(1.0f);
                 Destroy(g.gameObject);
             }
         }

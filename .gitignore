@@ -36,5 +36,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-
+pre_alpha.exe
+pre_alpha_Data/
 # End of https://www.gitignore.io/api/unity

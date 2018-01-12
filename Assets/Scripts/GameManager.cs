@@ -12,6 +12,8 @@ public enum GameResult
 
 public class GameManager : MonoBehaviour {
 
+    public Transform pauseCanvas;
+
     public SimpleBusController bus;
     public RouteController route;
 
@@ -57,6 +59,19 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (!pauseCanvas.gameObject.activeInHierarchy)
+            {
+                pauseCanvas.gameObject.SetActive(true);
+            }
+            else
+            {
+                pauseCanvas.gameObject.SetActive(false);
+            }
+        }
+
 		if (timerValue == 0 && !route.IsRouteComplete())
         {
             gameResult = GameResult.Loss;
